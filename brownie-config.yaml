@@ -1,0 +1,22 @@
+# exclude SafeMath when calculating test coverage
+# https://eth-brownie.readthedocs.io/en/v1.10.3/config.html#exclude_paths
+reports:
+  exclude_contracts:
+    - SafeMath
+
+networks:
+  default: development 
+  development:
+    gas_limit: auto 
+    gas_buffer: 1.1 
+    gas_price: auto 
+    reverting_tx_gas_limit: false 
+    default_contract_owner: false 
+
+dependencies:
+  - OpenZeppelin/openzeppelin-contracts@3.0.0
+compiler:
+  solc:
+    remappings:
+      - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.1.0"
+      - "@ensdomains=ensdomains/ens@0.6.0"
