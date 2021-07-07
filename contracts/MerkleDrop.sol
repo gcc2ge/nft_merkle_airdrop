@@ -9,16 +9,21 @@ pragma solidity ^0.8.4;
 
 import "./NFT.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "./IMerkleDistributor.sol";
 
-contract MerkleDrop is IMerkleDistributor {
+contract MerkleDrop is IMerkleDistributor,Ownable {
     address public immutable override token;
-    bytes32 public immutable override merkleRoot;
+    bytes32 public override merkleRoot;
 
     mapping(address => bool) public withdrawn;
 
     constructor(address token_, bytes32 merkleRoot_) public {
         token = token_;
+        merkleRoot = merkleRoot_;
+    }
+
+    function setMerkleRoot(bytes32 merkleRoot_) public onlyOwner {
         merkleRoot = merkleRoot_;
     }
 
