@@ -3,7 +3,7 @@
 import pytest
 from merkle_drop.load_csv import load_airdrop_file
 from merkle_drop.merkle_tree import build_tree, compute_merkle_root, create_proof
-from merkle_drop.airdrop import get_balance, get_item, to_items
+from merkle_drop.airdrop import get_tokenURI, get_item, to_items
 
 
 @pytest.fixture(scope="function", autouse=True)
@@ -14,8 +14,8 @@ def isolate(fn_isolation):
 
 
 @pytest.fixture(scope="module")
-def nft(NFT, accounts):
-    return NFT.deploy("ME Annual NFT", "ME", "https://gateway.pinata.cloud/ipfs/", {'from': accounts[0]})
+def nft(AnnualNFT, accounts):
+    return AnnualNFT.deploy("ME Annual NFT", "ME", "https://gateway.pinata.cloud/ipfs/", {'from': accounts[0]})
 
 
 @pytest.fixture(scope="module")

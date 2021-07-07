@@ -1,6 +1,6 @@
 from typing import List, NamedTuple, Optional
 
-from eth_utils import is_canonical_address, keccak
+from eth_utils import is_canonical_address, keccak, to_bytes
 
 
 class Item(NamedTuple):
@@ -72,10 +72,7 @@ def compute_leaf_hash(item: Item) -> bytes:
     if not is_canonical_address(address):
         raise ValueError("Address must be a canonical address")
 
-    if value < 0 or value >= 2 ** 256:
-        raise ValueError("value is negative or too large")
-
-    return keccak(address + value.to_bytes(32, "big"))
+    return keccak(address + to_bytes(text=value))
 
 
 def _build_leaves(items: List[Item]) -> List[Node]:
@@ -108,7 +105,8 @@ def in_tree(item: Item, root: Node) -> bool:
 def create_proof(item: Item, tree: Tree) -> List[bytes]:
 
     leaf_hash = compute_leaf_hash(item)
-    leaf = next((leave for leave in tree.leaves if leave.hash == leaf_hash), None)
+    leaf = next(
+        (leave for leave in tree.leaves if leave.hash == leaf_hash), None)
 
     proof = []
 

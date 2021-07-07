@@ -29,9 +29,6 @@ def validate_address_value_pairs(address_value_pairs):
         if not is_address(address):
             raise ValueError(f"Expected checksummed hex address, but got {address}")
 
-        if not value.isdigit():
-            raise ValueError(f"Expected decimal number as value, but got {value}")
-
         canonical_address = to_canonical_address(address)
         if canonical_address in addresses:
             raise ValueError(f"Got address {address} multiple times")
