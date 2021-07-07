@@ -4,6 +4,7 @@ import pytest
 from merkle_drop.load_csv import load_airdrop_file
 from merkle_drop.merkle_tree import build_tree, compute_merkle_root, create_proof
 from merkle_drop.airdrop import get_tokenURI, get_item, to_items
+from merkle_drop.merkle_tree import Item, build_tree, create_proof, validate_proof
 
 
 @pytest.fixture(scope="function", autouse=True)
@@ -25,6 +26,45 @@ def merkleRoot(web3):
     merkle_root = compute_merkle_root(to_items(airdrop_data))
     return web3.toHex(merkle_root)
 
+
+@pytest.fixture(scope="session")
+def tree_data():
+    # Ignore the first address, since it is used for the premint_token_owner
+    airdrop_data = load_airdrop_file(
+        "/Users/shouhewu/devWorkspace/defiWorkspace/nft_merkle_aidrdrop/data/airdrop.csv")
+    return to_items(airdrop_data)
+
+@pytest.fixture(scope="session")
+def proofs_for_tree_data(tree_data):
+    tree = build_tree(tree_data)
+    proofs = [create_proof(item, tree) for item in tree_data]
+
+    assert all(
+        validate_proof(item, proof, tree.root.hash)
+        for item, proof in zip(tree_data, proofs)
+    )
+
+    return proofs
+
+
+@pytest.fixture(scope="session")
+def eligible_address_0(tree_data):
+    return tree_data[0].address
+
+
+@pytest.fixture(scope="session")
+def eligible_value_0(tree_data):
+    return tree_data[0].value
+
+
+@pytest.fixture(scope="session")
+def proof_0(proofs_for_tree_data):
+    return proofs_for_tree_data[0]
+
+@pytest.fixture(scope="session")
+def root_hash_for_tree_data(tree_data):
+    tree = build_tree(tree_data)
+    return tree.root.hash
 
 @pytest.fixture(scope="module")
 def merkleDrop(MerkleDrop, accounts, nft, merkleRoot):
