@@ -12,6 +12,8 @@ kovan：
 
 # run server
 
+server服务帮助前端生成空投地址的Merkle proof
+
 ```
 python ./merkle_drop/server.py
 
