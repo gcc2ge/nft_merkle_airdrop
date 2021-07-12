@@ -5,6 +5,8 @@
 
 # address
 
+kovan：
+
 - AnnualNFT deployed at: 0x4c5F9E586eD26044e9700b4B33c32939a8b7Fc5a
 - MerkleDrop deployed at: 0x283Fa5502037720Fe97af6C1c964df0a05eAFc5A
 
