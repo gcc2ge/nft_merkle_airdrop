@@ -37,3 +37,7 @@ curl http://0.0.0.0:5000/merkle_proof/0x4c5F9E586eD26044e9700b4B33c32939a8b7Fc5a
 
 {"address":"0x4c5F9E586eD26044e9700b4B33c32939a8b7Fc5a","proof":[],"tokenURI":"0x0"}
 ```
+
+# 领取 NFT 例子
+
+参考 ./merkle_drop/withdraw.py 例子
