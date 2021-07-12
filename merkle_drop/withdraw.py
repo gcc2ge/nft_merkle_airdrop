@@ -45,7 +45,7 @@ if __name__ == "__main__":
     address = ''
     privkey = ''
 
-    ret = requests.get(f'http://106.14.242.24:5000/merkle_proof/{address}')
+    ret = requests.get(f'http://127.0.0.1:5000/merkle_proof/{address}')
     data = ret.json()
 
     is_claimed = isClaimed(w3, contract_address, address)

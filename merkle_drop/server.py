@@ -1,8 +1,5 @@
 import logging
-import math
-import time
 
-import pendulum
 from eth_utils import encode_hex, is_address, to_canonical_address, to_checksum_address
 from flask import Flask, abort, jsonify
 from flask_cors import CORS
@@ -79,4 +76,4 @@ def get_proof_for(address):
 if __name__ == "__main__":
     init_cors(origins="*")
     init("../data/airdrop.csv")
-    app.run()
+    app.run(host="0.0.0.0", port=5000)
