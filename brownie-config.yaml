@@ -20,3 +20,6 @@ compiler:
     remappings:
       - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.1.0"
       - "@ensdomains=ensdomains/ens@0.6.0"
+wallets:
+  from_key: ${PRIVATE_KEY}
+  from_mnemonic: ${MNEMONIC}
