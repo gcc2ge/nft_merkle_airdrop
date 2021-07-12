@@ -1,5 +1,5 @@
 
-from brownie import MerkleDrop, AnnualNFT, accounts, network, web3, config
+from brownie import MerkleDrop, MENFT, accounts, network, web3, config
 
 from eth_utils import address, encode_hex, is_checksum_address, to_canonical_address
 from merkle_drop.airdrop import get_tokenURI, get_item, to_items
@@ -12,11 +12,11 @@ def main():
         config["wallets"]["from_key"]
     )
 
-    nft = AnnualNFT.deploy(
-        "ME Annual NFT", "ME", "https://gateway.pinata.cloud/ipfs/", {'from': acct})
+    nft = MENFT.deploy(
+        "ME Share NFT", "ME", "https://gateway.pinata.cloud/ipfs/", {'from': acct})
 
     airdrop_data = load_airdrop_file(
-        "/Users/shouhewu/devWorkspace/defiWorkspace/nft_merkle_aidrdrop/data/airdrop.csv")
+        "./data/airdrop_share.csv")
     merkle_root = compute_merkle_root(to_items(airdrop_data))
 
     merkle_drop = MerkleDrop.deploy(

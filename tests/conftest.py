@@ -15,8 +15,8 @@ def isolate(fn_isolation):
 
 
 @pytest.fixture(scope="module")
-def nft(AnnualNFT, accounts):
-    return AnnualNFT.deploy("ME Annual NFT", "ME", "https://gateway.pinata.cloud/ipfs/", {'from': accounts[0]})
+def nft(MENFT, accounts):
+    return MENFT.deploy("ME Annual NFT", "ME", "https://gateway.pinata.cloud/ipfs/", {'from': accounts[0]})
 
 
 @pytest.fixture(scope="module")
