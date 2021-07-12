@@ -5,6 +5,11 @@
 
 # address
 
+rinkeby: 
+
+-  AnnualNFT deployed at: 0xd4F972ACd0a7c105133B12eF114fD9237e66c6cE
+-  MerkleDrop deployed at: 0xCDc90b7520a9CA83F5889471998cA2Df30b1b11f
+
 kovan：
 
 - AnnualNFT deployed at: 0x4c5F9E586eD26044e9700b4B33c32939a8b7Fc5a
