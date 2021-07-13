@@ -59,3 +59,17 @@ curl http://0.0.0.0:5000/merkle_proof/0x4c5F9E586eD26044e9700b4B33c32939a8b7Fc5a
 # 领取 NFT 例子
 
 参考 ./merkle_drop/withdraw.py 例子
+
+# docker 
+
+build
+
+```
+docker build -t me .
+```
+
+run 
+
+```
+docker run -p 5000:5000 me
+```
