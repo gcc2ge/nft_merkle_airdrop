@@ -10,8 +10,9 @@ from merkle_drop.merkle_tree import build_tree, create_proof
 
 app = Flask("Merkle Airdrop Backend Server")
 
-airdrop_dict = None
-airdrop_tree = None
+
+airdrop_dict_name = {}
+airdrop_tree_name = {}
 
 
 def init_gunicorn_logging():
@@ -25,15 +26,20 @@ def init_cors(**kwargs):
 
 
 def init(
-    airdrop_filename: str,
+    file_dict
 ):
-    global airdrop_dict
-    global airdrop_tree
+    global airdrop_dict_name
+    global airdrop_tree_name
 
-    app.logger.info(f"Initializing merkle tree from file {airdrop_filename}")
-    airdrop_dict = load_airdrop_file(airdrop_filename)
-    app.logger.info(f"Building merkle tree from {len(airdrop_dict)} entries")
-    airdrop_tree = build_tree(to_items(airdrop_dict))
+    for (k, v) in file_dict.items():
+        app.logger.info(
+            f"Initializing merkle tree from file {v}")
+        airdrop_dict = load_airdrop_file(v)
+        app.logger.info(
+            f"Building merkle tree from {len(airdrop_dict)} entries")
+        airdrop_tree = build_tree(to_items(airdrop_dict))
+        airdrop_dict_name[k] = airdrop_dict
+        airdrop_tree_name[k] = airdrop_tree
 
 
 @app.errorhandler(404)
@@ -51,11 +57,14 @@ def internal_server_error(e):
     return jsonify(error=500, message="There was an internal server error"), 500
 
 
-@app.route("/merkle_proof/<string:address>", methods=["GET"])
-def get_proof_for(address):
+@app.route("/merkle_proof/<string:nft_name>/<string:address>", methods=["GET"])
+def get_proof_for(nft_name, address):
     if not is_address(address):
         abort(400, "The address is not in checksum-case or invalid")
     canonical_address = to_canonical_address(address)
+
+    airdrop_dict = airdrop_dict_name[nft_name]
+    airdrop_tree = airdrop_tree_name[nft_name]
 
     eligible_tokens = get_tokenURI(canonical_address, airdrop_dict)
     if eligible_tokens == "0x0":
@@ -75,5 +84,6 @@ def get_proof_for(address):
 # Only for testing
 if __name__ == "__main__":
     init_cors(origins="*")
-    init("../data/airdrop.csv")
+    init({"annual": "../data/airdrop_annual.csv",
+          "bug_hunter": "../data/airdrop_bug_hunter.csv", "share": "../data/airdrop_share.csv"})
     app.run(host="0.0.0.0", port=5000)
