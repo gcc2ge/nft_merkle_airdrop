@@ -8,16 +8,16 @@
 rinkeby: 
 
 - Annual
-  -  AnnualNFT deployed at: 0xd4F972ACd0a7c105133B12eF114fD9237e66c6cE
-  -  MerkleDrop deployed at: 0xCDc90b7520a9CA83F5889471998cA2Df30b1b11f
+  -  AnnualNFT deployed at: 0x5486b4b042B772D31473A52497f2D3Ae566B25be
+  -  MerkleDrop deployed at: 0x1D6cec0a1b9e2661F9d94D31b17B4bf280C4232e
 
 - Bug Hunter
-  - BugHunterNFT deployed at: 0x39FEdaC5c03588Ef344ccb0e812C0b6271C954d9
-  - MerkleDrop deployed at: 0x2Da8Ae80bDe0c63B7A6dACE1c4bfC76Db91F01d2
+  - BugHunterNFT deployed at: 0x47f86ca6D8f57801444A2fCd08096F536a94431D
+  - MerkleDrop deployed at: 0xAeF5FaDd26c86a752e8F19E78B3d225357A5b17a
 
 - Share
-  - ShareNFT deployed at: 0x1B197F746043Fbd1b9FcE2bcEb8d6Fc1e2da9641
-  - MerkleDrop deployed at: 0x9f6cE3817508E7275f93f8047C9b8555e243EF55
+  - ShareNFT deployed at: 0x31402DEB3E3955b0f5499Bc7EAbCF0e1c2A630B4
+  - MerkleDrop deployed at: 0xE1688C59750419440b43d56716BF4b5cC3B908CE
 
 kovan：
 

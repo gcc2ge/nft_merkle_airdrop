@@ -5,7 +5,7 @@
    Conditions.
  */
 
-pragma solidity ^0.8.4;
+pragma solidity 0.8.3;
 
 import "./NFT.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
@@ -44,7 +44,7 @@ contract MerkleDrop is IMerkleDistributor,Ownable {
             "The proof could not be verified."
         );
 
-        uint256 tokenId = AnnualNFT(token).mint(msg.sender, tokenURI);
+        uint256 tokenId = MENFT(token).mint(msg.sender, tokenURI);
         withdrawn[msg.sender] = true;
         emit Claimed(msg.sender, tokenId, tokenURI);
     }
