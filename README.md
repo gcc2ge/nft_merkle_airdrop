@@ -8,8 +8,8 @@
 rinkeby: 
 
 - Annual
-  -  AnnualNFT deployed at: 0x5486b4b042B772D31473A52497f2D3Ae566B25be
-  -  MerkleDrop deployed at: 0x1D6cec0a1b9e2661F9d94D31b17B4bf280C4232e
+  -  AnnualNFT deployed at: 0xfAA1453b8a09F8FF7453bB9CED4FB4fd98f93157
+  -  MerkleDrop deployed at: 0x66B8e226d79B9217C25C27d55df97A0b64F1CbCE
 
 - Bug Hunter
   - BugHunterNFT deployed at: 0x47f86ca6D8f57801444A2fCd08096F536a94431D
