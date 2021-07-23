@@ -10,7 +10,7 @@ def load_airdrop_file(airdrop_file: str) -> Dict[bytes, int]:
         address_value_pairs = list(reader)
         # print('address_value_pairs',address_value_pairs)
 
-    validate_address_value_pairs(address_value_pairs)
+    # validate_address_value_pairs(address_value_pairs)
     return {
         to_canonical_address(address)+to_bytes(text=value): str(value)
         for address, value in address_value_pairs
