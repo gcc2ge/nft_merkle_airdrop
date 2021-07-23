@@ -1,7 +1,7 @@
 import csv
 from typing import Dict
 
-from eth_utils import is_address, to_canonical_address
+from eth_utils import is_address, to_canonical_address, to_bytes
 
 
 def load_airdrop_file(airdrop_file: str) -> Dict[bytes, int]:
@@ -12,7 +12,7 @@ def load_airdrop_file(airdrop_file: str) -> Dict[bytes, int]:
 
     validate_address_value_pairs(address_value_pairs)
     return {
-        to_canonical_address(address): str(value)
+        to_canonical_address(address)+to_bytes(text=value): str(value)
         for address, value in address_value_pairs
     }
 
@@ -27,13 +27,16 @@ def validate_address_value_pairs(address_value_pairs):
 
         address, value = address_value_pair
         if not is_address(address):
-            raise ValueError(f"Expected checksummed hex address, but got {address}")
+            raise ValueError(
+                f"Expected checksummed hex address, but got {address}")
 
         canonical_address = to_canonical_address(address)
         if canonical_address in addresses:
             raise ValueError(f"Got address {address} multiple times")
         addresses.add(canonical_address)
 
+
 if __name__ == "__main__":
-    data=load_airdrop_file("/Users/shouhewu/Downloads/merkle-drop/airdrop.csv")
+    data = load_airdrop_file(
+        "/Users/shouhewu/devWorkspace/defiWorkspace/nft_merkle_aidrdrop/data/airdrop_annual.csv")
     print(data)

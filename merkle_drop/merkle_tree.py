@@ -69,8 +69,8 @@ def build_tree(items: List[Item]) -> Tree:
 
 def compute_leaf_hash(item: Item) -> bytes:
     address, value = item
-    if not is_canonical_address(address):
-        raise ValueError("Address must be a canonical address")
+    # if not is_canonical_address(address):
+    #     raise ValueError("Address must be a canonical address")
 
     return keccak(address + to_bytes(text=value))
 

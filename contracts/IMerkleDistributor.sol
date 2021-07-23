@@ -10,7 +10,7 @@ interface IMerkleDistributor {
     function merkleRoot() external view returns (bytes32);
 
     // Returns true if the index has been marked claimed.
-    function isClaimed(address recipient) external view returns (bool);
+    function isClaimed(address recipient,string memory tokenURI) external view returns (bool);
 
     // Claim the given amount of the token to the given address. Reverts if the inputs are invalid.
     function claim(string calldata tokenURI, bytes32[] calldata merkleProof) external;

@@ -2,7 +2,7 @@ import math
 
 import eth_tester.exceptions
 import pytest
-from eth_utils import to_checksum_address
+from eth_utils import to_checksum_address, to_canonical_address
 from web3.exceptions import BadFunctionCallOutput
 from merkle_drop.merkle_tree import Item, build_tree, create_proof, validate_proof
 
@@ -15,7 +15,8 @@ def other_data():
 def test_proof_entitlement(merkleDrop, tree_data, proofs_for_tree_data):
 
     for i in range(len(proofs_for_tree_data)):
-        address = tree_data[i].address
+        canonical_addr = to_canonical_address(tree_data[i].address[:20])
+        address = to_checksum_address(canonical_addr)
         value = tree_data[i].value
         proof = proofs_for_tree_data[i]
         assert merkleDrop.verifyEntitled(
@@ -26,7 +27,8 @@ def test_proof_entitlement(merkleDrop, tree_data, proofs_for_tree_data):
 def test_incorrect_value_entitlement(
     merkleDrop, tree_data, proofs_for_tree_data
 ):
-    address = tree_data[0].address
+    canonical_addr = to_canonical_address(tree_data[0].address[:20])
+    address = to_checksum_address(canonical_addr)
     incorrect_value = tree_data[0].value + "1234"
     proof = proofs_for_tree_data[0]
 
@@ -57,8 +59,8 @@ def test_claim(
     merkleDrop, tree_data, proofs_for_tree_data
 ):
     for i in range(len(proofs_for_tree_data)):
-
-        address = to_checksum_address(tree_data[i].address)
+        canonical_addr = to_canonical_address(tree_data[i].address[:20])
+        address = to_checksum_address(canonical_addr)
         value = tree_data[i].value
         proof = proofs_for_tree_data[i]
         merkleDrop.claim(value, proof, {'from': address})

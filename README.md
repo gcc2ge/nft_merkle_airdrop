@@ -7,22 +7,10 @@
 
 rinkeby: 
 
-- Annual
-  -  AnnualNFT deployed at: 0xfAA1453b8a09F8FF7453bB9CED4FB4fd98f93157
-  -  MerkleDrop deployed at: 0x66B8e226d79B9217C25C27d55df97A0b64F1CbCE
+-  HashKeyMENFT deployed at: 0xC1C7E5eFc0AaBbB0604fe673AE30d3868777B810
+-  MerkleDrop deployed at: 0x611f2F40d38c378d4b9cD1c4E5e9A42640533EfC
 
-- Bug Hunter
-  - BugHunterNFT deployed at: 0x47f86ca6D8f57801444A2fCd08096F536a94431D
-  - MerkleDrop deployed at: 0xAeF5FaDd26c86a752e8F19E78B3d225357A5b17a
 
-- Share
-  - ShareNFT deployed at: 0x31402DEB3E3955b0f5499Bc7EAbCF0e1c2A630B4
-  - MerkleDrop deployed at: 0xE1688C59750419440b43d56716BF4b5cC3B908CE
-
-kovan：
-
-- AnnualNFT deployed at: 0x4c5F9E586eD26044e9700b4B33c32939a8b7Fc5a
-- MerkleDrop deployed at: 0x283Fa5502037720Fe97af6C1c964df0a05eAFc5A
 
 # run server
 

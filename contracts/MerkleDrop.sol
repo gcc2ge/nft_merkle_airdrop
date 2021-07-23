@@ -12,11 +12,11 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./IMerkleDistributor.sol";
 
-contract MerkleDrop is IMerkleDistributor,Ownable {
+contract MerkleDrop is IMerkleDistributor, Ownable {
     address public immutable override token;
     bytes32 public override merkleRoot;
 
-    mapping(address => bool) public withdrawn;
+    mapping(address => mapping(string => bool)) public withdrawn;
 
     constructor(address token_, bytes32 merkleRoot_) public {
         token = token_;
@@ -27,8 +27,14 @@ contract MerkleDrop is IMerkleDistributor,Ownable {
         merkleRoot = merkleRoot_;
     }
 
-    function isClaimed(address recipient) public view override returns (bool) {
-        return withdrawn[recipient];
+    function isClaimed(address recipient, string memory tokenURI)
+        public
+        view
+        override
+        returns (bool)
+    {
+        // recipint + tokenuri
+        return withdrawn[recipient][tokenURI];
     }
 
     function claim(string calldata tokenURI, bytes32[] calldata proof)
@@ -36,7 +42,7 @@ contract MerkleDrop is IMerkleDistributor,Ownable {
         override
     {
         require(
-            !withdrawn[msg.sender],
+            !isClaimed(msg.sender, tokenURI),
             "You have already withdrawn your entitled token."
         );
         require(
@@ -45,7 +51,7 @@ contract MerkleDrop is IMerkleDistributor,Ownable {
         );
 
         uint256 tokenId = MENFT(token).mint(msg.sender, tokenURI);
-        withdrawn[msg.sender] = true;
+        withdrawn[msg.sender][tokenURI] = true;
         emit Claimed(msg.sender, tokenId, tokenURI);
     }
 
@@ -56,7 +62,7 @@ contract MerkleDrop is IMerkleDistributor,Ownable {
     ) public view returns (bool) {
         // We need to pack the 20 bytes address to the 32 bytes value
         // to match with the proof made with the python merkle-drop package
-        bytes32 leaf = keccak256(abi.encodePacked(recipient, tokenURI));
+        bytes32 leaf = keccak256(abi.encodePacked(abi.encodePacked(recipient, tokenURI), tokenURI));
         return verifyProof(leaf, proof);
     }
 
