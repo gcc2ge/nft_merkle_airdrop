@@ -94,4 +94,16 @@ contract MENFT is ERC721Enumerable, Ownable {
         // If there is a baseURI but no tokenURI, concatenate the tokenID to the baseURI.
         return string(abi.encodePacked(base, tokenId.toString()));
     }
+
+    function tokensOfOwner(address owner)
+        public
+        view
+        returns (uint256[] memory tokens)
+    {
+        uint256 tokenLength = super.balanceOf(owner);
+        tokens = new uint256[](tokenLength);
+        for (uint256 i = 0; i < tokenLength; i++) {
+            tokens[i] = ERC721Enumerable.tokenOfOwnerByIndex(owner, i);
+        }
+    }
 }
