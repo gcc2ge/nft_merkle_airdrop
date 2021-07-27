@@ -7,8 +7,8 @@
 
 rinkeby: 
 
--  HashKeyMENFT deployed at: 0xC1C7E5eFc0AaBbB0604fe673AE30d3868777B810
--  MerkleDrop deployed at: 0x611f2F40d38c378d4b9cD1c4E5e9A42640533EfC
+-  HashKeyMENFT deployed at: 0x283Fa5502037720Fe97af6C1c964df0a05eAFc5A
+-  MerkleDrop deployed at: 0xe39Db77C5415Fea811d08E8036F58A1e84025Dd5
 
 
 
