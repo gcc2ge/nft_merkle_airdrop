@@ -5,6 +5,11 @@
 
 # address
 
+mainnet:
+
+- MENFT deployed at: 0x82f3C9801760EbF3aF64905F4B529eA6B5A39D23
+- MerkleDrop deployed at: 0xCdfa6775B0E21Bf0FC0936ad2Ab508179dD4dA6e
+
 rinkeby: 
 
 -  HashKeyMENFT deployed at: 0x283Fa5502037720Fe97af6C1c964df0a05eAFc5A
