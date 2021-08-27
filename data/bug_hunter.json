@@ -1,7 +1,6 @@
 {
     "name": "Me Bounty Hunter",
-    "description_en": "The proof of a sharp-eyed bounty hunter. This special token will give you access to our future exclusive benefits.",
-    "description_zh": "目光犀利的赏金猎手，这是你的证明。这枚独特的Token将在未来给您带来专属惊喜~",
-    "video": "https://gateway.pinata.cloud/ipfs/QmRFMijqgdP1kZo7gFJNuyH4xu6kfXkNaAt79FuQFX7195",
+    "description": "The proof of a sharp-eyed bounty hunter. This special token will give you access to our future exclusive benefits.",
+    "image": "https://gateway.pinata.cloud/ipfs/QmRFMijqgdP1kZo7gFJNuyH4xu6kfXkNaAt79FuQFX7195",
     "type": "03"
 }
