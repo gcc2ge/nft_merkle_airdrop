@@ -12,8 +12,8 @@ mainnet:
 
 rinkeby: 
 
--  HashKeyMENFT deployed at: 0x283Fa5502037720Fe97af6C1c964df0a05eAFc5A
--  MerkleDrop deployed at: 0xe39Db77C5415Fea811d08E8036F58A1e84025Dd5
+-  HashKeyMENFT deployed at: 0x29cCFE6B9f5AA2D5038d75861085E327490f75A3
+-  MerkleDrop deployed at: 0x0C18B00d0d5A41d8a8a45D7e9D84B0FDd7178F24
 
 
 
